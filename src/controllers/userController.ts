@@ -40,7 +40,7 @@ export const createUser = async (request: Request, response: Response) => {
     const uuid = uuidv4();
 
     const newUser = await prisma.user.create({
-      data: { uuid, name, email, password, role },
+      data: { uuid, name, email, password: md5(password), role },
     });
 
     return response
@@ -106,7 +106,7 @@ export const deleteAllUser = async (request: Request, response: Response) => {
 
 export const profileUser = async (request: Request, response: Response) => {
   try {
-    const { id} = request.params;
+    const { id } = request.params;
     const findUser = await prisma.user.findFirst({
       where: { id: Number(id) },
     });
@@ -176,8 +176,8 @@ export const authentication = async (request: Request, response: Response) => {
       .json({
         status: true,
         logged: true,
-        // data: { ...findUser, token },
         message: `User has logged in successfully`,
+        token,
       })
       .status(200);
   } catch (error) {

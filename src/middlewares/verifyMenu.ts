@@ -8,6 +8,7 @@ const addDataSchema = Joi.object({
   category: Joi.string().valid('FOOD','DRINK','SNACK').required(),
   description: Joi.string().required(),
   picture: Joi.allow().optional(), //allow = diperbolehkan
+  user: Joi.optional()
 });
 
 const addEditSchema = Joi.object({
@@ -16,6 +17,7 @@ const addEditSchema = Joi.object({
   category: Joi.string().valid('FOOD','DRINK','SNACK').optional(),
   description: Joi.string().optional(),
   picture: Joi.allow().optional(), //allow = diperbolehkan
+  user: Joi.optional()
 });
 
 

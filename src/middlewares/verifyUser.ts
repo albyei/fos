@@ -9,6 +9,7 @@ const addDataSchema = Joi.object({
   password: Joi.string().min(3).alphanum().required(),
   role: Joi.string().valid(`CASHIER`, `MANAGER`).required(),
   profile_picture: Joi.allow().optional(),
+  
 });
 
 const UpdateDataSchema = Joi.object({
