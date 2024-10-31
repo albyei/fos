@@ -54,7 +54,7 @@ export const createUser = async (request: Request, response: Response) => {
     return response
       .json({
         status: false,
-        message: `There os an error.${error}`,
+        message: `There is an error.${error}`,
       })
       .status(400);
   }

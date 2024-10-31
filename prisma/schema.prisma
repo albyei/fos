@@ -45,7 +45,7 @@ model menu {
   description String      @default("") @db.Text
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
-  orderLists  OrderList[]
+  orderLists  OrderLists[]
 }
 
 model user {
@@ -71,12 +71,12 @@ model Order {
   status         Status      @default(NEW)
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
-  orderLists     OrderList[]
+  orderLists     OrderLists[]
   User           user?       @relation(fields: [userid], references: [id])
   userid         Int?
 }
 
-model OrderList {
+model OrderLists {
   id        Int      @id @default(autoincrement())
   uuid      String   @unique @default("")
   quantity  Int      @default(0)

@@ -13,7 +13,7 @@ import { verifyRole, verifyToken } from "../middlewares/authorization";
 const app = express();
 app.use(express.json());
 
-app.get(`/`,[verifyToken, verifyRole(["MANAGER","CASHIER"]),], getAllmenus);
+app.get(`/`,[verifyToken, verifyRole(["MANAGER","CASHIER"])], getAllmenus);
 app.post(`/`, [verifyToken, verifyRole(["MANAGER"]),verifyAddMenu], createMenu);
 app.put(`/:id`, [verifyToken, verifyRole(["MANAGER"]),verifyEditMenu], updatedMenu);
 app.put(`/pic/:id`, [verifyToken, verifyRole(["MANAGER"]),uploadFile.single("picture")], changePicture);
